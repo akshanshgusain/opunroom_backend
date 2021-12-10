@@ -22,7 +22,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 SECRET_KEY = 'django-insecure-7+i#sim98^v&e=(s3k@9@u^f)8%+3gcbsmwb67mz*bf#k*lz-q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
