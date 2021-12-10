@@ -1,0 +1,17 @@
+import datetime
+
+AWS_ACCESS_KEY_ID = 'AKIA4OW5YK7KLXKWTW6J'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_FILE_EXPIRE = 200
+AWS_PRELOAD_METADATA = True
+AWS_QUERYSTRING_AUTH = True
+AWS_DEFAULT_ACL = None
+AWS_S3_ADDRESSING_STYLE = 'virtual'
+
+# DEFAULT_FILE_STORAGE = 'opundoor.aws.utils.MediaRootS3BotoStorage'
+# STATICFILES_STORAGE = 'opundoor.aws.utils.StaticRootS3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'opundoormedia'
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
