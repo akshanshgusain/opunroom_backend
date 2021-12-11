@@ -168,9 +168,16 @@ def get_all_friend_requests(request):
 @api_view(['POST'])
 def get_all_friends(request):
     user_id = request.data.get('user_id')
-    user = Account.objects.get(id=user_id)
+    try:
+        user = Account.objects.get(id=user_id)
+    except Exception as e:
+        return Response({
+            'status': False,
+            'message': f'{e}',
+            'result': []
+        })
 
-    friends = FriendList.objects.all()
+    friends = FriendList.objects.get(user=user).friends
     friend_serializer = AccountSerializer(friends, many=True)
 
     return Response({
