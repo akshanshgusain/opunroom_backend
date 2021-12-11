@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from accounts.api.serializers import AccountSerializer
 from accounts.models import Account
 from friend.api.serializers import FriendRequestSerializer
 from friend.models import FriendRequest, FriendList
@@ -158,7 +159,22 @@ def get_all_friend_requests(request):
     friend_requests_serializer = FriendRequestSerializer(friend_requests, many=True)
 
     return Response({
-            'status': True,
-            'message': 'Success',
-            'result': friend_requests_serializer.data
-        })
+        'status': True,
+        'message': 'Success',
+        'result': friend_requests_serializer.data
+    })
+
+
+@api_view(['POST'])
+def get_all_friends(request):
+    user_id = request.data.get('user_id')
+    user = Account.objects.get(id=user_id)
+
+    friends = FriendList.objects.all()
+    friend_serializer = AccountSerializer(friends, many=True)
+
+    return Response({
+        'status': True,
+        'message': 'Success',
+        'result': friend_serializer.data
+    })
