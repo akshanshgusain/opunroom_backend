@@ -62,7 +62,7 @@ def user_exit(request):
     query = Account.objects.filter(phone_number=phone_number).first()
 
     if query is None:
-        return Response({"id": '',
+        return Response({"id": -1,
                          "password": "",
                          "username": "",
                          "date_joined": "",
@@ -74,7 +74,7 @@ def user_exit(request):
                          "f_name": "First Name",
                          "l_name": "Last Name",
                          "phone_number": "",
-                         "email": "null",
+                         "email": "",
                          "profile_image": "/media/opundoor/img/default_profile_image.png",
                          "cover_image": "/media/opundoor/img/default_cover_image.png",
                          "privacy": "1"})
@@ -104,7 +104,7 @@ def log_in(request):
         dict_result = {"status": False,
                        "message": "Invalid Otp",
                        "result": {
-                           "id": '',
+                           "id": -1,
                            "password": "",
                            "username": "",
                            "date_joined": "",
@@ -116,7 +116,7 @@ def log_in(request):
                            "f_name": "First Name",
                            "l_name": "Last Name",
                            "phone_number": "",
-                           "email": '',
+                           "email": "",
                            "profile_image": "/media/opundoor/img/default_profile_image.png",
                            "cover_image": "/media/opundoor/img/default_cover_image.png",
                            "privacy": "1"
@@ -148,7 +148,7 @@ def register(request):
         dict_result = {"status": False,
                        "message": "Invalid Otp",
                        "result": {
-                           "id": '',
+                           "id": -1,
                            "password": "",
                            "username": "",
                            "date_joined": "",
@@ -160,7 +160,7 @@ def register(request):
                            "f_name": "First Name",
                            "l_name": "Last Name",
                            "phone_number": "",
-                           "email": '',
+                           "email": "",
                            "profile_image": "/media/opundoor/img/default_profile_image.png",
                            "cover_image": "/media/opundoor/img/default_cover_image.png",
                            "privacy": "1"
@@ -172,7 +172,7 @@ def register(request):
             'status': False,
             'message': 'User Already Exist',
             'result': {
-                "id": '',
+                "id": -1,
                 "password": "",
                 "username": "",
                 "date_joined": "",
@@ -184,7 +184,7 @@ def register(request):
                 "f_name": "First Name",
                 "l_name": "Last Name",
                 "phone_number": "",
-                "email": '',
+                "email": "",
                 "profile_image": "/media/opundoor/img/default_profile_image.png",
                 "cover_image": "/media/opundoor/img/default_cover_image.png",
                 "privacy": "1"
@@ -207,7 +207,7 @@ def register(request):
                 'status': False,
                 'message': f'{e}',
                 'result': {
-                    "id": '',
+                    "id": -1,
                     "password": "",
                     "username": "",
                     "date_joined": "",
@@ -219,7 +219,7 @@ def register(request):
                     "f_name": "First Name",
                     "l_name": "Last Name",
                     "phone_number": "",
-                    "email": '',
+                    "email": "",
                     "profile_image": "/media/opundoor/img/default_profile_image.png",
                     "cover_image": "/media/opundoor/img/default_cover_image.png",
                     "privacy": "1"
