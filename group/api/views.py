@@ -116,3 +116,5 @@ def update_group(request):
     return Response({'status': True,
                      'message': 'Group Created',
                      'result': group_serializer.data})
+
+

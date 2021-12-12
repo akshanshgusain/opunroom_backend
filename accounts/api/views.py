@@ -232,6 +232,7 @@ def update_profile(request):
     print(request)
     user_name = request.data.get('username')
     user = Account.objects.get(username=user_name)
+
     try:
         profile_image = request.FILES['profile_image']
         user.profile_image = profile_image
@@ -276,6 +277,7 @@ def search_user(request):
     user_id = request.data.get('user_id')
     keyword = request.data.get('search_keyword')
     user = Account.objects.filter(id=user_id).first()
+
     if len(keyword) > 0:
         search_result = Account.objects.filter(
             Q(username__icontains=keyword) | Q(phone_number__contains=keyword)).distinct().exclude(id=user_id)
@@ -288,7 +290,7 @@ def search_user(request):
     else:
         return Response({'status': False,
                          'message': 'No Keyword!',
-                         'result': {}})
+                         'result': []})
 
 
 @api_view(['POST'])
@@ -344,6 +346,7 @@ def search_user_profile(request):
         # FriendRequestStatus.YOU_SENT_TO_THEM
         elif get_friend_request_or_false(sender=user, receiver=friend):
             request_sent = FriendRequestStatus.YOU_SENT_TO_THEM.value
+            pending_friend_request_id = get_friend_request_or_false(sender=user, receiver=friend).id
 
         # 2.2.3. NO friend request have been sent
         # FriendRequestStatus.NO_REQUEST_SENT
