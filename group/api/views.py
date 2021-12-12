@@ -37,13 +37,13 @@ def get_community_members(request):
     if admin is None:
         return Response({'status': False,
                          'message': 'User Does not Exist!',
-                         'result': {}})
+                         'result': []})
     else:
         account_community = Community.objects.filter(group_folks=admin).first()
         if account_community is None:
             return Response({'status': False,
                              'message': 'User Does not Belong to Any Community',
-                             'result': {}})
+                             'result': []})
         else:
             members_of_same_community = account_community.group_folks.all()
             account_serializer = AccountSerializer(members_of_same_community, many=True)
@@ -60,7 +60,7 @@ def get_group_members(request):
     except Exception as e:
         return Response({'status': False,
                          'message': 'Group Does Not Exist',
-                         'result': {}})
+                         'result': []})
     group_members = group.group_folks
     serialize = AccountSerializer(group_members, many=True)
     return Response({'status': True,
