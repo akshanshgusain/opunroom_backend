@@ -85,8 +85,8 @@ def create_group(request):
             new_group.save()
         except IntegrityError as e:
             return Response({'status': False,
-                             'message': 'User Does not Exist!',
-                             'result': f'{e}'})
+                             'message': 'Group Title needs to be Unique',
+                             'result': {}})
 
         members = Account.objects.filter(id__in=member_ids).all()
         for member in members:
