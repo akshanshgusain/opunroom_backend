@@ -15,6 +15,8 @@ class GroupTSerializer(serializers.ModelSerializer):
 
 
 class GroupT2Serializer(serializers.ModelSerializer):
+    group_founder = AccountSerializer()
+
     class Meta:
         model = GroupT
         # fields = ('id', 'group_title', 'date_created', 'last_update', 'group_founder', 'group_folks')
